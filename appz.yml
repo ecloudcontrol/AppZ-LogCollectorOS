@@ -1,0 +1,32 @@
+app:
+  name: LogCollectorOS
+  code: LCES
+  notify: appz@cloudbourne.co
+
+build:
+  version: 2.15
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: opensearch-2.15
+  image_name: alpha/log-collector-os
+
+deploy:
+  context: alpha/DEV
+  # type: elasticsearch6  
+  replicas: 1
+  port:
+  - 9200
+  - 9300
+
+volumes:
+- claim: elasticsearch-data
+  mount: /appz/data
+  name: opensearch-data
+
+monitor:
+  notify: appzops@cloudbourne.co      
+
+properties:
+  revision : 25
+  
