@@ -17,8 +17,7 @@ deploy:
   port:
   - 9200
   - 9300
-  - 9600
-
+  
 volumes:
 - claim: opensearch-data
   mount: /usr/share/opensearch/data
