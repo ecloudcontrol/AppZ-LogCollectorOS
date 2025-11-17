@@ -29,5 +29,5 @@ monitor:
   notify: appzops@cloudbourne.co     
 
 properties:
-  OPENSEARCH_INITIAL_ADMIN_PASSWORD: aee6e0898de4b1316dabd00451ebeb3ec9e7fd9c03520497eff2b0a29bfdc776
-  revision : 2
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD : "{{opensearch_initial_admin_password}}"
+  revision : 1
