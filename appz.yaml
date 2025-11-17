@@ -1,0 +1,33 @@
+app:
+  name: LogCollectorOS
+  code: LCOS
+  notify: appz@cloudbourne.co
+
+build:
+  version: 2.15
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: opensearch-2.15
+
+deploy:
+  context: alpha/DEV
+  type: statefulset 
+  replicas: 1
+  port:
+  - 9200
+  - 9300
+  
+volumes:
+- claim: opensearch-data
+  mount: /usr/share/opensearch/data
+  name: opensearch-data
+  size: 20Gi
+  mode: ReadWriteOnce
+  class: microk8s-hostpath
+monitor:
+  notify: appzops@cloudbourne.co     
+
+properties:
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD: aee6e0898de4b1316dabd00451ebeb3ec9e7fd9c03520497eff2b0a29bfdc776
+  revision : 2
